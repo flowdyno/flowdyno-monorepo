@@ -1,0 +1,269 @@
+{
+  "version": "1.0.0",
+  "exportedAt": "2025-11-21T10:44:47.278Z",
+  "nodes": [
+    {
+      "id": "data-sources",
+      "type": "concept",
+      "label": "Data Sources",
+      "icon": "database",
+      "position": {
+        "x": 273.5061414686679,
+        "y": 182.99024577201132
+      },
+
+      "animationEffects": {
+        "rotate": false,
+        "shake": false
+      }
+    },
+    {
+      "id": "api-source",
+      "type": "api",
+      "label": "REST API",
+      "icon": "fastapi",
+      "position": {
+        "x": 403.26856861884926,
+        "y": 58.06091247025449
+      }
+    },
+    {
+      "id": "file-source",
+      "type": "concept",
+      "label": "CSV Files",
+      "icon": "document",
+      "position": {
+        "x": 638.1467436783403,
+        "y": 84.08306245943794
+      }
+    },
+    {
+      "id": "kafka",
+      "type": "queue",
+      "label": "Apache Kafka",
+      "icon": "apachekafka",
+      "position": {
+        "x": 487.0359937324231,
+        "y": 321.9667750162248
+      },
+      "animationEffects": {
+        "electric": false,
+        "shake": false,
+        "nodePulse": false,
+        "rotateInterval": false
+      }
+    },
+    {
+      "id": "airflow",
+      "type": "devops",
+      "label": "Apache Airflow",
+      "icon": "apacheairflow",
+      "position": {
+        "x": 207.9778500108165,
+        "y": 432.32671234045597
+      },
+      "animationEffects": {
+        "rotate": true,
+        "rotateInterval": false,
+        "shake": false,
+        "pathDrawing": true,
+        "pathFlow": false
+      }
+    },
+    {
+      "id": "spark",
+      "type": "backend",
+      "label": "Apache Spark",
+      "icon": "apachespark",
+      "position": {
+        "x": 614.681593905488,
+        "y": 499.1965811540032
+      },
+      "animationEffects": {
+        "rotate": false,
+        "rotateInterval": false,
+        "shake": false,
+        "pathDrawing": true,
+        "pathFlow": false
+      }
+    },
+    {
+      "id": "data-warehouse",
+      "type": "database",
+      "label": "Snowflake",
+      "icon": "postgresql",
+      "position": {
+        "x": 320.49837475662764,
+        "y": 687.3405560836956
+      }
+    },
+    {
+      "id": "dbt",
+      "type": "backend",
+      "label": "dbt",
+      "icon": "python",
+      "position": {
+        "x": 681.3294810891039,
+        "y": 753.24088113237
+      }
+    },
+    {
+      "id": "bi-tool",
+      "type": "monitoring",
+      "label": "Grafana",
+      "icon": "grafana",
+      "position": {
+        "x": 169.50114350527542,
+        "y": 875.567593472826
+      },
+      "animationEffects": {
+        "rotate": true
+      }
+    },
+    {
+      "id": "ml-platform",
+      "type": "backend",
+      "label": "ML Platform",
+      "icon": "tensorflow",
+      "position": {
+        "x": 440.5814372160655,
+        "y": 961.4125435485416
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn-1",
+      "from": "data-sources",
+      "to": "kafka",
+      "label": "Stream",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-2",
+      "from": "api-source",
+      "to": "kafka",
+      "label": "Events",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-3",
+      "from": "file-source",
+      "to": "kafka",
+      "label": "Batch",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-4",
+      "from": "kafka",
+      "to": "spark",
+      "label": "Process",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-5",
+      "from": "airflow",
+      "to": "spark",
+      "label": "Schedule",
+      "lineStyle": "dashed",
+      "edgeType": "smoothstep",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-6",
+      "from": "spark",
+      "to": "data-warehouse",
+      "label": "Load",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-7",
+      "from": "data-warehouse",
+      "to": "dbt",
+      "label": "Transform",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-8",
+      "from": "data-warehouse",
+      "to": "bi-tool",
+      "label": "Query",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-9",
+      "from": "data-warehouse",
+      "to": "ml-platform",
+      "label": "Features",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    }
+  ],
+  "animationSettings": {
+    "enabled": true,
+    "speed": "normal",
+    "loop": true,
+    "effects": {
+      "pathDrawing": false,
+      "nodePulse": true,
+      "fadeIn": true,
+      "glow": true,
+      "rotate": false,
+      "rotateInterval": false,
+      "electric": false,
+      "shake": false,
+      "pathFlow": true
+    }
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "version": "1.0.0",
+  "exportedAt": "2025-11-21T09:38:39.255Z",
+  "nodes": [
+    {
+      "id": "user",
+      "type": "concept",
+      "label": "User",
+      "icon": "user",
+      "position": {
+        "x": 500,
+        "y": 50
+      }
+    },
+    {
+      "id": "web-app",
+      "type": "frontend",
+      "label": "Web App",
+      "icon": "react",
+      "position": {
+        "x": 350,
+        "y": 280
+      }
+    },
+    {
+      "id": "mobile-app",
+      "type": "frontend",
+      "label": "Mobile App",
+      "icon": "flutter",
+      "position": {
+        "x": 650,
+        "y": 310
+      }
+    },
+    {
+      "id": "auth-gateway",
+      "type": "api",
+      "label": "Auth Gateway",
+      "icon": "nginx",
+      "position": {
+        "x": 500,
+        "y": 520
+      },
+      "animationEffects": {
+        "rotate": true
+      }
+    },
+    {
+      "id": "oauth-provider",
+      "type": "service",
+      "label": "OAuth Provider",
+      "icon": "oauth",
+      "position": {
+        "x": 200,
+        "y": 760
+      }
+    },
+    {
+      "id": "jwt-service",
+      "type": "service",
+      "label": "JWT Service",
+      "icon": "nodejs",
+      "position": {
+        "x": 500,
+        "y": 790
+      },
+      "animationEffects": {
+        "chargingBar": true
+      }
+    },
+    {
+      "id": "mfa-service",
+      "type": "service",
+      "label": "MFA Service",
+      "icon": "twilio",
+      "position": {
+        "x": 800,
+        "y": 780
+      }
+    },
+    {
+      "id": "google-oauth",
+      "type": "cloud",
+      "label": "Google OAuth",
+      "icon": "google",
+      "position": {
+        "x": 0,
+        "y": 1020
+      }
+    },
+    {
+      "id": "user-db",
+      "type": "database",
+      "label": "User Database",
+      "icon": "postgresql",
+      "position": {
+        "x": 350,
+        "y": 1050
+      }
+    },
+    {
+      "id": "session-store",
+      "type": "cache",
+      "label": "Session Store",
+      "icon": "redis",
+      "position": {
+        "x": 650,
+        "y": 1080
+      }
+    },
+    {
+      "id": "github-oauth",
+      "type": "cloud",
+      "label": "GitHub OAuth",
+      "icon": "github",
+      "position": {
+        "x": 100,
+        "y": 1260
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn-1",
+      "from": "user",
+      "to": "web-app",
+      "label": "Login",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-2",
+      "from": "user",
+      "to": "mobile-app",
+      "label": "Login",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-3",
+      "from": "web-app",
+      "to": "auth-gateway",
+      "label": "Auth Request",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-4",
+      "from": "mobile-app",
+      "to": "auth-gateway",
+      "label": "Auth Request",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-5",
+      "from": "auth-gateway",
+      "to": "oauth-provider",
+      "label": "OAuth Flow",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-6",
+      "from": "auth-gateway",
+      "to": "jwt-service",
+      "label": "Generate Token",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-7",
+      "from": "auth-gateway",
+      "to": "mfa-service",
+      "label": "2FA",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-8",
+      "from": "jwt-service",
+      "to": "user-db",
+      "label": "Verify User",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-9",
+      "from": "jwt-service",
+      "to": "session-store",
+      "label": "Store Session",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-10",
+      "from": "oauth-provider",
+      "to": "google-oauth",
+      "label": "Google Login",
+      "lineStyle": "dashed",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-11",
+      "from": "oauth-provider",
+      "to": "github-oauth",
+      "label": "GitHub Login",
+      "lineStyle": "dashed",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    }
+  ],
+  "animationSettings": {
+    "enabled": true,
+    "speed": "normal",
+    "loop": true,
+    "effects": {
+      "pathDrawing": false,
+      "nodePulse": true,
+      "fadeIn": true,
+      "glow": true,
+      "rotate": false,
+      "rotateInterval": false,
+      "electric": false,
+      "shake": false,
+      "pathFlow": true
+    }
+  }
+}

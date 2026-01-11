@@ -1,0 +1,10 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "augment.completions.enableAutomaticCompletions": false,
+  "augment.nextEdit.enableBackgroundSuggestions": false,
+  "augment.completions.enableQuickSuggestions": false
+}

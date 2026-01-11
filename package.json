@@ -1,0 +1,26 @@
+{
+  "name": "flowdyno-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --filter @flowdyno/shared-config build && pnpm --filter flowdyno-frontend build",
+    "build:shared": "pnpm --filter @flowdyno/shared-config build",
+    "dev": "pnpm --filter flowdyno-frontend dev",
+    "dev:frontend": "pnpm --filter flowdyno-frontend dev",
+    "lint": "pnpm --filter flowdyno-frontend lint",
+    "lint:fix": "pnpm --filter flowdyno-frontend lint -- --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
+    "typecheck": "pnpm --filter flowdyno-frontend type-check"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "typescript": "5.9.2"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "sortablejs": "^1.15.6"
+  }
+}

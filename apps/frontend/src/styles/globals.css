@@ -1,0 +1,255 @@
+@import './animations.css';
+
+/* Devicon 字体定义 */
+@import './devicon.css';
+
+/* Devicon 图标类 */
+@import 'devicon/devicon.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* React Flow custom styles for neon theme */
+
+/* Z-index 通过 node.zIndex 和 edge.zIndex 属性设置 */
+/* Frame=1, Edges=2, Nodes=3 */
+
+/* Performance optimizations */
+.react-flow {
+  /* Enable GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.react-flow__renderer {
+  /* Force GPU rendering */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.react-flow__viewport {
+  /* Optimize viewport transformations */
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.react-flow__node {
+  /* Enable GPU acceleration for nodes */
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  overflow: visible !important;
+}
+
+.react-flow__node.dragging {
+  /* Optimize dragging performance */
+  pointer-events: none;
+  will-change: transform;
+}
+
+.react-flow__edge-path {
+  stroke-width: 3;
+  filter: drop-shadow(0 0 8px currentColor);
+  /* Enable GPU acceleration for edges */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.react-flow__edge-textbg {
+  fill: transparent !important;
+}
+
+.react-flow__edge.animated path {
+  /* Optimize animated edges */
+  will-change: stroke-dashoffset;
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+.react-flow__handle {
+  transition:
+    opacity 0.2s ease,
+    box-shadow 0.2s ease !important;
+  cursor: crosshair !important;
+}
+
+.react-flow__handle:hover {
+  box-shadow:
+    0 0 0 2px #00f0ff,
+    0 0 30px rgba(0, 240, 255, 1),
+    0 0 60px rgba(0, 240, 255, 0.7) !important;
+}
+
+/* Show handles when connecting */
+.react-flow__node:hover .react-flow__handle {
+  opacity: 1 !important;
+}
+
+.react-flow.connecting .react-flow__handle {
+  opacity: 1 !important;
+}
+
+.react-flow__controls {
+  background: #1a1a24 !important;
+  border: 1px solid #2e2e3a !important;
+  border-radius: 8px !important;
+}
+
+.react-flow__controls-button {
+  background: #1a1a24 !important;
+  border-bottom: 1px solid #2e2e3a !important;
+  color: #00f0ff !important;
+}
+
+.react-flow__controls-button:hover {
+  background: #242430 !important;
+}
+
+.react-flow__minimap {
+  background: #1a1a24 !important;
+  border: 1px solid #2e2e3a !important;
+  border-radius: 8px !important;
+}
+
+@keyframes dashdraw {
+  to {
+    stroke-dashoffset: 10;
+  }
+}
+
+@layer base {
+  * {
+    border-color: #2e2e3a;
+  }
+
+  body {
+    @apply bg-dark-900 text-white antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glow-text {
+    text-shadow:
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 60px currentColor;
+  }
+
+  .glow-border {
+    box-shadow:
+      0 0 15px currentColor,
+      0 0 30px currentColor;
+  }
+
+  .neon-blue {
+    color: #00f0ff;
+  }
+
+  .neon-purple {
+    color: #b000ff;
+  }
+
+  .neon-pink {
+    color: #ff00ff;
+  }
+
+  .neon-orange {
+    color: #ff6b00;
+  }
+
+  /* Smooth transitions (⚠️ 不要对 transform 做全局过渡, 否则 React Flow 拖拽/缩放会很卡) */
+  * {
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill, stroke, opacity,
+      box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a24;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b000ff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d000ff;
+}
+
+/* Custom range slider styles */
+input[type='range'].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type='range'].slider::-webkit-slider-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  height: 8px;
+}
+
+input[type='range'].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #b000ff;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px #b000ff,
+    0 0 20px rgba(176, 0, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+input[type='range'].slider::-webkit-slider-thumb:hover {
+  background: #d000ff;
+  box-shadow:
+    0 0 15px #d000ff,
+    0 0 30px rgba(208, 0, 255, 0.7);
+  transform: scale(1.1);
+}
+
+input[type='range'].slider::-moz-range-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  height: 8px;
+}
+
+input[type='range'].slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: #b000ff;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px #b000ff,
+    0 0 20px rgba(176, 0, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+input[type='range'].slider::-moz-range-thumb:hover {
+  background: #d000ff;
+  box-shadow:
+    0 0 15px #d000ff,
+    0 0 30px rgba(208, 0, 255, 0.7);
+  transform: scale(1.1);
+}

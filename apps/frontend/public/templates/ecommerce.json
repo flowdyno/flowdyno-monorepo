@@ -1,0 +1,249 @@
+{
+  "version": "1.0.0",
+  "exportedAt": "2025-11-21T10:50:50.311Z",
+  "nodes": [
+    {
+      "id": "user",
+      "type": "concept",
+      "label": "User",
+      "icon": "user",
+      "position": {
+        "x": 501,
+        "y": 71
+      }
+    },
+    {
+      "id": "frontend",
+      "type": "frontend",
+      "label": "Web App",
+      "icon": "react",
+      "position": {
+        "x": 501,
+        "y": 300
+      },
+
+      "animationEffects": {
+        "rotate": true
+      }
+    },
+    {
+      "id": "api-gateway",
+      "type": "api",
+      "label": "API Gateway",
+      "icon": "nginx",
+      "position": {
+        "x": 501,
+        "y": 538
+      },
+      "animationEffects": {
+        "electric": false,
+        "shake": true
+      }
+    },
+    {
+      "id": "user-service",
+      "type": "service",
+      "label": "User Service",
+      "icon": "nodejs",
+      "position": {
+        "x": 231,
+        "y": 820
+      }
+    },
+    {
+      "id": "product-service",
+      "type": "service",
+      "label": "Product Service",
+      "icon": "nodejs",
+      "position": {
+        "x": 431,
+        "y": 840
+      }
+    },
+    {
+      "id": "cart-service",
+      "type": "service",
+      "label": "Cart Service",
+      "icon": "nodejs",
+      "position": {
+        "x": 603,
+        "y": 827
+      }
+    },
+    {
+      "id": "payment-service",
+      "type": "service",
+      "label": "Payment Service",
+      "icon": "nodejs",
+      "position": {
+        "x": 860,
+        "y": 837
+      }
+    },
+    {
+      "id": "user-db",
+      "type": "database",
+      "label": "User DB",
+      "icon": "postgresql",
+      "position": {
+        "x": 230,
+        "y": 1035
+      }
+    },
+    {
+      "id": "product-db",
+      "type": "database",
+      "label": "Product DB",
+      "icon": "mongodb",
+      "position": {
+        "x": 430,
+        "y": 1041
+      }
+    },
+    {
+      "id": "redis",
+      "type": "cache",
+      "label": "Redis Cache",
+      "icon": "redis",
+      "position": {
+        "x": 602,
+        "y": 1041
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn-1",
+      "from": "user",
+      "to": "frontend",
+      "label": "Browse",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-2",
+      "from": "frontend",
+      "to": "api-gateway",
+      "label": "HTTPS",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-3",
+      "from": "api-gateway",
+      "to": "user-service",
+      "label": "Auth",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-4",
+      "from": "api-gateway",
+      "to": "product-service",
+      "label": "Products",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-5",
+      "from": "api-gateway",
+      "to": "cart-service",
+      "label": "Cart",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-6",
+      "from": "api-gateway",
+      "to": "payment-service",
+      "label": "Payment",
+      "lineStyle": "solid",
+      "edgeType": "bezier",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-7",
+      "from": "user-service",
+      "to": "user-db",
+      "label": "Query",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-8",
+      "from": "product-service",
+      "to": "product-db",
+      "label": "Query",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-9",
+      "from": "cart-service",
+      "to": "redis",
+      "label": "Cache",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    }
+  ],
+  "animationSettings": {
+    "enabled": true,
+    "speed": "normal",
+    "loop": true,
+    "effects": {
+      "pathDrawing": false,
+      "nodePulse": true,
+      "fadeIn": true,
+      "glow": true,
+      "rotate": false,
+      "rotateInterval": false,
+      "electric": false,
+      "shake": false,
+      "pathFlow": true
+    }
+  }
+}

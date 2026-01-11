@@ -1,0 +1,297 @@
+{
+  "version": "1.0.0",
+  "exportedAt": "2025-11-21T10:49:11.415Z",
+  "nodes": [
+    {
+      "id": "client",
+      "type": "concept",
+      "label": "Client",
+      "icon": "mobile",
+      "position": {
+        "x": 500,
+        "y": 50
+      },
+      "animationEffects": {
+        "fadeIn": false,
+        "electric": false,
+        "nodePulse": true
+      }
+    },
+    {
+      "id": "api-gateway",
+      "type": "api",
+      "label": "API Gateway",
+      "icon": "nginx",
+      "position": {
+        "x": 669,
+        "y": 218
+      }
+    },
+    {
+      "id": "auth-service",
+      "type": "service",
+      "label": "Auth Service",
+      "icon": "oauth",
+      "position": {
+        "x": 488,
+        "y": 397
+      }
+    },
+    {
+      "id": "user-service",
+      "type": "service",
+      "label": "User Service",
+      "icon": "nodejs",
+      "position": {
+        "x": 669,
+        "y": 592
+      }
+    },
+    {
+      "id": "order-service",
+      "type": "service",
+      "label": "Order Service",
+      "icon": "go",
+      "position": {
+        "x": 831,
+        "y": 493
+      }
+    },
+    {
+      "id": "postgres",
+      "type": "database",
+      "label": "PostgreSQL",
+      "icon": "postgresql",
+      "position": {
+        "x": 337,
+        "y": 663
+      }
+    },
+    {
+      "id": "mongodb",
+      "type": "database",
+      "label": "MongoDB",
+      "icon": "mongodb",
+      "position": {
+        "x": 471,
+        "y": 752
+      }
+    },
+    {
+      "id": "message-queue",
+      "type": "queue",
+      "label": "RabbitMQ",
+      "icon": "rabbitmq",
+      "position": {
+        "x": 830,
+        "y": 751
+      },
+      "animationEffects": {
+        "rotate": false,
+        "shake": false,
+        "chargingBar": true
+      }
+    },
+    {
+      "id": "redis",
+      "type": "cache",
+      "label": "Redis",
+      "icon": "redis",
+      "position": {
+        "x": 1061,
+        "y": 635
+      }
+    },
+    {
+      "id": "notification-service",
+      "type": "service",
+      "label": "Notification",
+      "icon": "nodejs",
+      "position": {
+        "x": 603,
+        "y": 923
+      }
+    },
+    {
+      "id": "email-service",
+      "type": "service",
+      "label": "Email Service",
+      "icon": "google",
+      "position": {
+        "x": 830,
+        "y": 1035
+      }
+    },
+    {
+      "id": "analytics-service",
+      "type": "service",
+      "label": "Analytics",
+      "icon": "google",
+      "position": {
+        "x": 1095,
+        "y": 947
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn-1",
+      "from": "client",
+      "to": "api-gateway",
+      "label": "HTTPS",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-2",
+      "from": "api-gateway",
+      "to": "auth-service",
+      "label": "Auth",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-3",
+      "from": "api-gateway",
+      "to": "user-service",
+      "label": "REST",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-4",
+      "from": "api-gateway",
+      "to": "order-service",
+      "label": "REST",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-5",
+      "from": "order-service",
+      "to": "message-queue",
+      "label": "Publish",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-6",
+      "from": "message-queue",
+      "to": "notification-service",
+      "label": "Subscribe",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-7",
+      "from": "message-queue",
+      "to": "email-service",
+      "label": "Subscribe",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-8",
+      "from": "message-queue",
+      "to": "analytics-service",
+      "label": "Subscribe",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-9",
+      "from": "auth-service",
+      "to": "postgres",
+      "label": "Query",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-10",
+      "from": "user-service",
+      "to": "mongodb",
+      "label": "Query",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    },
+    {
+      "id": "conn-11",
+      "from": "order-service",
+      "to": "redis",
+      "label": "Cache",
+      "lineStyle": "solid",
+      "edgeType": "smoothstep",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "animationEffects": {
+        "pathFlow": true
+      }
+    }
+  ],
+  "animationSettings": {
+    "enabled": true,
+    "speed": "normal",
+    "loop": true,
+    "effects": {
+      "pathDrawing": false,
+      "nodePulse": true,
+      "fadeIn": true,
+      "glow": true,
+      "rotate": false,
+      "rotateInterval": false,
+      "electric": false,
+      "shake": false,
+      "pathFlow": true
+    }
+  }
+}
