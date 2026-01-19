@@ -401,7 +401,7 @@ A: **Fully supported**. You can deploy FlowDyno in an intranet environment. Just
 
 ## 🔗 Links
 
-- **X (Twitter)**: [@flowdyno_ai](https://x.com/flowdyno_ai)
+- **X (Twitter)**: [@hyperyond_ai](https://x.com/hyperyond_ai)
 - **GitHub**: [github.com/flowdyno/flowdyno-monorepo](https://github.com/flowdyno/flowdyno-monorepo)
 - **Issues**: [Submit bugs or suggestions](https://github.com/flowdyno/flowdyno-monorepo/issues)
 
@@ -423,7 +423,7 @@ Thanks to these amazing open source projects:
 
 ## 👥 Author
 
-- **Oliver** - [@oliver3109](https://github.com/oliver3109)
+- **Oliver** - [@chihyungchang](https://github.com/chihyungchang)
 
 ---
 
